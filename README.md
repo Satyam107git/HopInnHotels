@@ -1,6 +1,6 @@
-Team name: HopInnHotels
+<h3>Problem statement: HOTEL TRANSYLVANIA</h3>
 
-Problem statement: HOTEL TRANSYLVANIA
+Team name: HopInnHotels
 
 Team Members:
 Satyam Agarwal
