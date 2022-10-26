@@ -1,8 +1,9 @@
 <h3>Problem statement: HOTEL TRANSYLVANIA</h3>
 
-Team name: HopInnHotels
+<h4>Team name:  HopInnHotels </h4>
 
-Team Members:
+<h4>Team Members:</h4>
+
 Satyam Agarwal
 
 Prafull Jhariya
@@ -11,7 +12,7 @@ Siddhant Goel
 
 Sunil Athawale
 
-Proposed features:
+<h4>Proposed features:</h4>
 
 Login signup
 
@@ -24,4 +25,4 @@ Server side with admin access for hotel staff to check guest list and their arri
 General rooms can be booked by anyone; Special rooms will require approval by monster id and requires Manager’s approval for booking.
 
 
-Tech Stacks: React,Nodejs, MongoDB and related APIs.
+<h4>Tech Stacks:</h4> React.js ,Node.js ,Express.js, MongoDB
