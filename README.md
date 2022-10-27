@@ -4,13 +4,13 @@
 
 <h4>Team Members:</h4>
 
-Satyam Agarwal
+Satyam Agarwal (https://github.com/Satyam107git)
 
-Prafull Jhariya
+Prafull Jhariya (https://github.com/prafull1221)
 
-Siddhant Goel
+Siddhant Goel (https://github.com/SID-18)
 
-Sunil Athawale
+Sunil Athawale (https://github.com/Sunil8wale)
 
 <h4>Proposed features:</h4>
 
