@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://SID-18:Sidhu6392@hotelt.9k9aefj.mongodb.net/?retryWrites=true&w=majority",
+    "jwtSecret":"mysecrettoken"
+}
