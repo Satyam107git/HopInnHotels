@@ -47,7 +47,7 @@ async (req,res) =>{
         //See If user Exists
         let user =await User.findOne({ email});
 
-        if(user){
+        if(!user){
            return res.status(400).json({ errors: [{ msg: 'Invalid Credentials'}]});
         }
 
@@ -56,17 +56,7 @@ async (req,res) =>{
         if(!isMatch){
             return res.status(400).json({ errors: [{ msg: 'Invalid Credentials'}]});
         }
-
-        //Encrypting Password
-
-        const salt =await bcrypt.genSalt(10);
-
-        user.password= await bcrypt.hash(password,salt);
-
-        await user.save();
-
-        //Return jswebtoken
-
+ 
         const payload= {
             user :{
                 id: user.id
@@ -80,7 +70,7 @@ async (req,res) =>{
         });
 
 
-        res.send('User Registered');
+      
     }catch(err){
     console.error(err.message);
     res.status(500).send('Server error');
