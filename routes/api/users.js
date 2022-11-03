@@ -8,6 +8,7 @@ const config= require('config');
 const { check, validationResult }= require('express-validator');
 
 const User= require('../../models/User');
+const Profile= require('../../models/Profile');
 
 //@route  POST api/users
 //@desc   Register route
@@ -15,6 +16,7 @@ const User= require('../../models/User');
 
 router.post('/',[
     check('name','Name is Required').not().isEmpty(),
+    check('creature','Please select an option').not().isEmpty(),
     check('email','Please include a valid email').isEmail(),
     check('password','Please enter a password with 6 or more characters').isLength({ min: 6})
 
@@ -26,7 +28,7 @@ async (req,res) =>{
     {
         return res.status(400).json({ errors: errors.array()});
     }
-    const {name,email,password} = req.body;
+    const {name,creature,email,password} = req.body;
 
     try{
         //See If user Exists
@@ -45,6 +47,7 @@ async (req,res) =>{
 
         user= new User({
             name,
+            creature,
             email,
             avatar,
             password
