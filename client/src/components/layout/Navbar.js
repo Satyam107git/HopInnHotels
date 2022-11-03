@@ -15,7 +15,11 @@ const Navbar = ({ auth:{isAuthenticated,loading},logout}) => {
           <span className='hide-sm'>
           Logout</span>
           </Link></li>
-      
+          <li><Link to="/book-room"  >
+          <i className='fas fa-sign-out-alt' />{''}
+          <span className='hide-sm'>
+          Book Room</span>
+          </Link></li>
       </ul>
   );
   const guestLinks=(
@@ -29,7 +33,7 @@ const Navbar = ({ auth:{isAuthenticated,loading},logout}) => {
   return (
          <nav className="navbar bg-dark">
       <h1>
-        <Link to="/"><i className="fas fa-code"></i> DevConnector</Link>
+        <Link to="/">Hotel Transylvania</Link>
       </h1>
       {!loading &&(<Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>)}
     </nav>

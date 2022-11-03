@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import BookRoom from './components/pages/BookRoom';
 import Alert from './components/layout/Alert';
 import './App.css';
 //Redux
@@ -33,6 +34,7 @@ const App = () => {
     <section className='container'>
       <Alert />
       <Routes>
+      <Route path="/book-room" element={<BookRoom />} />
         <Route exact path='/register' element={<Register/>} />
         <Route exact path='/login' element={<Login/>} />
       </Routes>
