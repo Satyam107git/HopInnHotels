@@ -6,6 +6,7 @@ import { rooms } from "../../room";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import "bootstrap-daterangepicker/daterangepicker.css";
 import $ from "jquery";
+import { useNavigate } from "react-router-dom";
 
 const handleEvent = (event, picker) => {
   console.log(picker.startDate);
@@ -26,14 +27,12 @@ function selector(e, roomSelected) {
     card.classList.add("border-light");
     // console.log($("#table2").hasClass("border-light"));
   } else if (card.classList.contains("border-light")) {
-
     card.classList.remove("border-light");
     if (roomSelected == 1) {
       if ($("#table2").hasClass("border-success")) {
         $("#table2").removeClass("border-success");
         $("#table2").addClass("border-light");
         $("#table1").addClass("border-success");
-
       } else {
         card.classList.add("border-success");
       }
@@ -42,7 +41,6 @@ function selector(e, roomSelected) {
         $("#table1").removeClass("border-success");
         $("#table1").addClass("border-light");
         $("#table2").addClass("border-success");
-
       } else {
         card.classList.add("border-success");
       }
@@ -50,9 +48,21 @@ function selector(e, roomSelected) {
   }
 }
 
-const today = new Date();
-
 function BookRoom() {
+  const navigate = useNavigate();
+  const saveDetails = () => {
+    let class1 = $("#table1").hasClass("border-success");
+    let class2 = $("#table2").hasClass("border-success");
+
+    console.log(class1, class2);
+    if ((class1 = "false" && class2 == "false")) {
+      alert("Please book room");
+    } else {
+      dispatch(saveRoomDetails({ tableNo }));
+      navigate("/ ");
+    }
+  };
+
   return (
     <div>
       <header
@@ -65,6 +75,7 @@ function BookRoom() {
           objectFit: "contain",
         }}
       ></header>
+
       <h1 style={{ color: "brown" }} className="text-center my-2">
         Book your Room
       </h1>
@@ -87,6 +98,15 @@ function BookRoom() {
           </DateRangePicker>
         </Container>
       </div>
+
+      <Button
+        className="my-4"
+        type="button"
+        variant="primary"
+        onClick={(e) => saveDetails()}
+      >
+        Book Room
+      </Button>
     </div>
   );
 }
