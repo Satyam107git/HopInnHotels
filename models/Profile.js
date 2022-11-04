@@ -7,15 +7,12 @@ const ProfileSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'user'
   },
-  // userId: {
-  //   type: String,
-  //   required: true,
-  //   unique: true
-  // }, 
-  date: {
-    type: Date,
-    default: Date.now
-  }
+  userId: {
+    type:  String,
+    required: true,
+    unique: true
+  }, 
+ 
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);

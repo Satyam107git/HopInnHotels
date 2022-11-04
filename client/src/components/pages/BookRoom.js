@@ -5,14 +5,50 @@ import RoomCard from "../../components/RoomCard";
 import { rooms } from "../../room";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import "bootstrap-daterangepicker/daterangepicker.css";
+import $ from "jquery";
 
 const handleEvent = (event, picker) => {
   console.log(picker.startDate);
-  console.log(document.getElementById('date-pick').value)
+  console.log(document.getElementById("date-pick").value);
 };
 const handleCallback = (start, end, label) => {
   console.log(start, end, label);
 };
+
+function selector(e, roomSelected) {
+  const card = e.target.closest(".card-parent");
+  //   console.log(roomSelected)
+  // console.log(card )
+  // console.log(card.classList.contains("border-light"))
+
+  if (card.classList.contains("border-success")) {
+    card.classList.remove("border-success");
+    card.classList.add("border-light");
+    // console.log($("#table2").hasClass("border-light"));
+  } else if (card.classList.contains("border-light")) {
+
+    card.classList.remove("border-light");
+    if (roomSelected == 1) {
+      if ($("#table2").hasClass("border-success")) {
+        $("#table2").removeClass("border-success");
+        $("#table2").addClass("border-light");
+        $("#table1").addClass("border-success");
+
+      } else {
+        card.classList.add("border-success");
+      }
+    } else if (roomSelected == 2) {
+      if ($("#table1").hasClass("border-success")) {
+        $("#table1").removeClass("border-success");
+        $("#table1").addClass("border-light");
+        $("#table2").addClass("border-success");
+
+      } else {
+        card.classList.add("border-success");
+      }
+    }
+  }
+}
 
 const today = new Date();
 
@@ -28,15 +64,16 @@ function BookRoom() {
           position: "relative",
           objectFit: "contain",
         }}
-      >
-      </header>
+      ></header>
       <h1 style={{ color: "brown" }} className="text-center my-2">
         Book your Room
       </h1>
       <Row className="flex d-flex justify-content-center ">
-        {rooms.map((room) => (
+        {rooms.map((room, x) => (
           <Col key={room.id} sm={12} md={6} lg={4} xl={3}>
-            <RoomCard room={room} />
+            <div onClick={(e) => selector(e, x + 1)}>
+              <RoomCard room={room} border={"light"} id={`table${x + 1}`} />
+            </div>
           </Col>
         ))}
       </Row>
@@ -44,7 +81,7 @@ function BookRoom() {
         Select date of your stay
       </h1>
       <div className="min-vh-100">
-        <Container className="flex d-flex justify-content-center " >
+        <Container className="flex d-flex justify-content-center ">
           <DateRangePicker onEvent={handleEvent} onCallback={handleCallback}>
             <input id="date-pick" />
           </DateRangePicker>
@@ -54,5 +91,3 @@ function BookRoom() {
   );
 }
 export default BookRoom;
-
-

@@ -45,12 +45,21 @@ async (req,res) =>{
             d: 'mm'
         })
 
+
+        //creating unique id
+        if (creature == "monster")
+        var user_id = "m-"+Date.now()
+         else
+        var user_id = "h-" + Date.now()
+
+        // console.log(user_id)
         user= new User({
             name,
             creature,
             email,
             avatar,
-            password
+            password,
+            userId:user_id
         });
 
 
@@ -62,6 +71,7 @@ async (req,res) =>{
         user.password= await bcrypt.hash(password,salt);
 
         await user.save();
+
 
         //Return jswebtoken
 
