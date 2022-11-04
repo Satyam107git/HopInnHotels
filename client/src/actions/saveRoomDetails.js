@@ -7,19 +7,16 @@ import {
   export const saveRoomDetails =
     ({ roomType, arrivalDate, departureDate}) =>
     async (dispatch) => {
-      console.log( "dcdhj")
 
       const config = {
         headers: {
           'Content-Type': 'application/json',
         },
       };
-      console.log( "dcdhj")
      
       const body = JSON.stringify({ roomType, arrivalDate, departureDate});
     
       try {
-        console.log( "dcdhj")
        
         const res = await axios.post('/api/roomDetails', body, config);
         dispatch({

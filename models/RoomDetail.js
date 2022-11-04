@@ -8,7 +8,7 @@ const RoomDetailSchema=new Schema({
       },
    roomNo:{
     type: Number,
-    required: true
+    required: false
    },
    arrivalDate:{
     type: String,
