@@ -7,6 +7,9 @@ import DateRangePicker from "react-bootstrap-daterangepicker";
 import "bootstrap-daterangepicker/daterangepicker.css";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
+import {saveRoomDetails } from '../../actions/saveRoomDetails';
+import  { Fragment, useState } from 'react';
+
 
 const handleEvent = (event, picker) => {
   console.log(picker.startDate);
@@ -49,6 +52,13 @@ function selector(e, roomSelected) {
 }
 
 function BookRoom() {
+  
+  const [formData, setFormData] = useState({
+    roomType: "general",
+    arrivalDate: '123',
+    departureDate: '123',
+
+  });
   const navigate = useNavigate();
   const saveDetails = () => {
     let class1 = $("#table1").hasClass("border-success");
@@ -58,8 +68,14 @@ function BookRoom() {
     if ((class1 = "false" && class2 == "false")) {
       alert("Please book room");
     } else {
-      dispatch(saveRoomDetails({ tableNo }));
-      navigate("/ ");
+      console.log("ghhh11")
+
+      
+      const { roomType, arrivalDate, departureDate} = formData;
+      console.log( "shhs")
+      saveRoomDetails( { roomType, arrivalDate, departureDate });
+      console.log("ghhh22")
+      // navigate("/ ");
     }
   };
 

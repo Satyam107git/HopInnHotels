@@ -62,6 +62,8 @@ async (req,res) =>{
             userId:user_id
         });
 
+
+        profile=new Profile()
         //Encrypting Password
 
         const salt =await bcrypt.genSalt(10);
