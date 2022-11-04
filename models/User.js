@@ -24,7 +24,12 @@ const UserSchema=new mongoose.Schema({
     creature:{
         type: String,
         required: true
-    }
+    },
+    userId: {
+        type:  String,
+        required: true,
+        unique: true
+      }, 
 });
 
 module.exports= user= mongoose.model('user',UserSchema);
