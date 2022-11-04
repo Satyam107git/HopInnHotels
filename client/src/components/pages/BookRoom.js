@@ -7,19 +7,16 @@ import DateRangePicker from "react-bootstrap-daterangepicker";
 import "bootstrap-daterangepicker/daterangepicker.css";
 import $ from "jquery";
 import { useNavigate } from "react-router-dom";
-import {saveRoomDetails } from '../../actions/saveRoomDetails';
-import  { Fragment, useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
+import { saveRoomDetails } from "../../actions/saveRoomDetails";
+import { Fragment, useState } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 const handleEvent = (event, picker) => {
-//   console.log(picker.startDate);
+  //   console.log(picker.startDate);
   // let date=document.getElementById("date-pick").value
   // console.log(date.substr(0,10));
   // console.log(date.substr(13));
-
-  
 };
 const handleCallback = (start, end, label) => {
   console.log(start, end, label);
@@ -57,8 +54,7 @@ function selector(e, roomSelected) {
   }
 }
 
-  const BookRoom = ({ saveRoomDetails }) => {
-
+const BookRoom = ({ saveRoomDetails }) => {
   const navigate = useNavigate();
   const saveDetails = () => {
     let class1 = $("#table1").hasClass("border-success");
@@ -66,24 +62,19 @@ function selector(e, roomSelected) {
 
     console.log(class1, class2);
 
-    let roomType;
-    if ((class1 = "false" && class2 == "false")) {
-      alert("Please book room");
-    } else {
-      
-      if (class1 == true)
-        roomType = "General"
-      else
-        roomType = "Reserved"
-      
-        // console.log(document.getElementById("date-pick").value);
-        let date=document.getElementById("date-pick").value
-        let arrivalDate =date.substr(0,10);
-        let departureDate=date.substr(13);
-      
-      saveRoomDetails( { roomType, arrivalDate, departureDate });
-      // navigate("/");
-    }
+    var roomType="a";
+  
+    if (class1  ) roomType = "General";
+    else if (class2  ) roomType = "Reserved";
+
+    // console.log(roomType);
+    // console.log(document.getElementById("date-pick").value);
+    let date = document.getElementById("date-pick").value;
+    let arrivalDate = date.substr(0, 10);
+    let departureDate = date.substr(13);
+
+    saveRoomDetails( { roomType, arrivalDate, departureDate });
+    navigate("/booking");
   };
 
   return (
@@ -132,18 +123,14 @@ function selector(e, roomSelected) {
       </Button>
     </div>
   );
-}
-
-
+};
 
 BookRoom.propTypes = {
   saveRoomDetails: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
- 
-});
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps, {
-  saveRoomDetails
+  saveRoomDetails,
 })(BookRoom);
